@@ -1,7 +1,9 @@
 ﻿namespace Bakery.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Http;
     using System.Web.Http.Data.EntityFramework;
+
     using Bakery.Web.Database;
     using Bakery.Web.Models;
 

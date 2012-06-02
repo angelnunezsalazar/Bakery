@@ -1,6 +1,4 @@
-﻿/// <reference path="../_references.js" />
-
-var Order = function (product) {
+﻿var Order = function (product) {
     var self = this;
     self.address = ko.observable();
     self.email = ko.observable();

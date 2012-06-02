@@ -1,7 +1,6 @@
-﻿using System.Linq;
-
-namespace Bakery.Web.Controllers
+﻿namespace Bakery.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Http.Data.EntityFramework;
 
     using Bakery.Web.Database;

@@ -35,7 +35,7 @@ namespace Bakery.Web
 
             routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "dataservice/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 
