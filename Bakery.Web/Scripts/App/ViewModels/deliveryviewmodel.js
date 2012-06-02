@@ -1,12 +1,7 @@
 ﻿
 var ChooseProductViewModel = function () {
     var self = this;
-
-    amplify.request.define("products#getAll", "ajax", {
-        url: "/dataservice/products",
-        dataType: "json",
-        type: "GET"
-    });
+    var productsDataSource = new ProductsDataSource();
 
     self.products = ko.observableArray();
 
@@ -15,7 +10,7 @@ var ChooseProductViewModel = function () {
     };
 
     self.init = function () {
-        amplify.request("products#getAll", function (data) {
+        productsDataSource.getAll(function(data) {
             self.products(data);
         });
     };
@@ -25,30 +20,19 @@ var ChooseProductViewModel = function () {
 
 var PlaceOrderViewModel = function (productId) {
     var self = this;
-
-    amplify.request.define("products#get", "ajax", {
-        url: "/dataservice/products/{id}",
-        dataType: "json",
-        type: "GET"
-    });
-
-    amplify.request.define("orders#create", "ajax", {
-        url: "/dataservice/orders",
-        contentType: "application/json;charset=utf-8",
-        dataType: "json",
-        type: "POST"
-    });
+    var productsDataSource = new ProductsDataSource();
+    var ordersDataSource = new OrdersDataSource();
 
     self.order = ko.observable();
 
     self.postOrder = function () {
-        amplify.request("orders#create", ko.toJSON(self.order), function () {
+        ordersDataSource.create(self.order, function () {
             location.hash = 'delivery/confirmation';
         });
     };
 
     self.init = function () {
-        amplify.request("products#get", { id: productId }, function (product) {
+        productsDataSource.get(productId, function(product) {
             self.order(new Order(product));
         });
     };

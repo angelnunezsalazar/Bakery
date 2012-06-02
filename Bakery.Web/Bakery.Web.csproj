@@ -168,6 +168,7 @@
     <Content Include="Content\images\products\thumbnails\cupcakes.jpg" />
     <Content Include="Content\images\products\thumbnails\lemon_tart.jpg" />
     <Content Include="Content\images\products\thumbnails\pear_tart.jpg" />
+    <Content Include="Scripts\App\Data\datasources.js" />
     <Content Include="Scripts\App\Models\models.js" />
     <Content Include="Scripts\App\ViewModels\deliveryviewmodel.js" />
     <Content Include="Scripts\Lib\amplify-vsdoc.js" />
