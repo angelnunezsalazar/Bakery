@@ -341,12 +341,13 @@ fieldset {
 /* Confirmation
 -----------------------------------------------------------*/
 
-.order-success {
+#order-success {
+	padding: 15px 15px;
 	background: #edece8;
 	color: #696969;
 }
 
-	.order-success h2 {
+	#order-success h2 {
 		margin: 0;
 	}
 	
@@ -391,7 +392,7 @@ fieldset {
 	border: 1px solid;
 	clear: both;
 	margin: 15px 0px;
-	padding: 15px 15px;
+	padding: 0px 15px;
 	
 	/*CSS3 properties*/
 	border-radius: 4px;
@@ -405,6 +406,7 @@ fieldset {
 .info {
 	background: #bde5f8;
 	color: #00529b;
+	font-weight: bold;
 }
 
 .error {

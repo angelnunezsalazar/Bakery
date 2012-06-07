@@ -1,78 +1,82 @@
-﻿<div data-bind="with: chooseProduct">
-    <ul id="products" data-bind="foreach: products">
-        <li class="product">
-            <div class="productInfo">
-                <h3 data-bind="text: name">
-                </h3>
-                <img class="product-image" data-bind="attr:{ src:'/content/images/products/thumbnails/' + imagename, alt:name }" />
-                <p class="description" data-bind="text: description">
-                </p>
-            </div>
-            <div>
-                <p class="price" data-bind="money: price">
-                </p>
-                <a class="order-button" data-bind="attr:{ title:name }, click:$parent.goToPlaceOrder">
-                    Order Now</a>
-            </div>
-        </li>
-    </ul>
-</div>
-<div data-bind="with: placeOrder">
-    <!-- ko with: order -->
-    <h1 data-bind="text: 'Place Your Order: '+product.name">
-    </h1>
-    <form action="" method="post">
-        <fieldset class="no-legend">
-            <legend>Place Your Order</legend>
-            <img class="product-image order-image" data-bind="attr:{ src:'/content/images/products/thumbnails/' + product.imagename, alt:product.name }" />
-            <ol>
-                <li>
-                    <label for="orderEmail">Your Email Address</label>
-                    <input type="text" id="orderEmail" name="orderEmail" data-bind="value:email" />
-                </li>
-                <li>
-                    <label for="orderShipping">Shipping Address</label>
-                    <textarea rows="4" cols="20" id="orderShipping" name="orderShipping" data-bind="value:address"></textarea>
-                </li>
-                <li class="quantity">
-                    <label for="orderQty">Quantity</label>
-                    <input type="text" id="quantity" name="quantity" data-bind="value:quantity, valueUpdate: 'afterkeydown'" />
-                    x <span id="orderPrice" data-bind="text:product.price"></span>
-                    = <span id="orderTotal" data-bind="text:total()"></span></li>
-            </ol>
-            <p>
-                <input type="submit" value="Place Order" data-bind="click:$parent.postOrder" />
-            </p>
-        </fieldset>
-    </form>
-    <!-- /ko -->
-</div>
-<div data-bind="with: confirmation">
-    <h1>Order Confirmation</h1>
-    <div class="message order-success">
-        <h2>Thank you for your order!</h2>
-        <p>
-            We are processing your order and have sent a confirmation email. Thank you for your
-            business and enjoy!
-        </p>
-    </div>
+﻿<div id="pendingToSave" class="message info" data-bind="visible:visible">
     <p>
-        <a class="back" data-bind="click:goToProducts">Seguir Comprando</a>
+        There are <span data-bind="text:count"></span> pending orders. These will be sent as soon as you reconnect.
     </p>
 </div>
 
+<div id="delivery">
+    <div data-bind="with: chooseProduct">
+        <ul id="products" data-bind="foreach: products">
+            <li class="product">
+                <div class="productInfo">
+                    <h3 data-bind="text: name">
+                    </h3>
+                    <img class="product-image" data-bind="attr:{ src:'/content/images/products/thumbnails/' + imagename, alt:name }" />
+                    <p class="description" data-bind="text: description">
+                    </p>
+                </div>
+                <div>
+                    <p class="price" data-bind="money: price">
+                    </p>
+                    <a class="order-button" data-bind="attr:{ title:name }, click:$parent.goToPlaceOrder">
+                        Order Now</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div data-bind="with: placeOrder">
+        <!-- ko with: order -->
+        <h1 data-bind="text: 'Place Your Order: '+product.name">
+        </h1>
+        <form action="" method="post">
+            <fieldset class="no-legend">
+                <legend>Place Your Order</legend>
+                <img class="product-image order-image" data-bind="attr:{ src:'/content/images/products/thumbnails/' + product.imagename, alt:product.name }" />
+                <ol>
+                    <li>
+                        <label for="orderEmail">Your Email Address</label>
+                        <input type="text" id="orderEmail" name="orderEmail" data-bind="value:email" />
+                    </li>
+                    <li>
+                        <label for="orderShipping">Shipping Address</label>
+                        <textarea rows="4" cols="20" id="orderShipping" name="orderShipping" data-bind="value:address"></textarea>
+                    </li>
+                    <li class="quantity">
+                        <label for="orderQty">Quantity</label>
+                        <input type="text" id="quantity" name="quantity" data-bind="value:quantity, valueUpdate: 'afterkeydown'" />
+                        x <span id="orderPrice" data-bind="text:product.price"></span>
+                        = <span id="orderTotal" data-bind="text:total()"></span></li>
+                </ol>
+                <p>
+                    <input type="submit" value="Place Order" data-bind="click:$parent.postOrder" />
+                </p>
+            </fieldset>
+        </form>
+        <!-- /ko -->
+    </div>
+    <div data-bind="with: confirmation">
+        <h1>Order Confirmation</h1>
+        <div id="order-success" class="message" >
+            <h2>Thank you for your order!</h2>
+            <!-- ko if: success -->
+            <p>
+                We are processing your order and have sent a confirmation email. Thank you for your
+                business and enjoy!
+            </p>
+            <!-- /ko -->
+            <!-- ko ifnot: success -->
+            <p>
+                It appears you were <strong>disconnected.</strong> Your orden will be sent as soon as you reconnect.
+            </p>
+            <!-- /ko -->
+        </div>
+        <p>
+            <a class="back" data-bind="click:goToProducts">Seguir Comprando</a>
+        </p>
+    </div>
+</div>
 <script type="text/javascript">
     $(function () {
-        ko.bindingHandlers.money = {
-            update: function (element, valueAccessor) {
-                var value = valueAccessor().toFixed(2);
-                var $elm = $(element);
-                var method = $elm.is(":input") ? "val" : "html";
-                $elm[method]("$" + value);
-            }
-        };
-
-        var delivery = new DeliveryViewModel();
-        ko.applyBindings(delivery);
+        initializeApplication();
     });
 </script>

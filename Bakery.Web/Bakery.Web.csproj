@@ -14,7 +14,7 @@
     <AssemblyName>Bakery.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -168,15 +168,22 @@
     <Content Include="Content\images\products\thumbnails\cupcakes.jpg" />
     <Content Include="Content\images\products\thumbnails\lemon_tart.jpg" />
     <Content Include="Content\images\products\thumbnails\pear_tart.jpg" />
-    <Content Include="Scripts\App\Data\datasources.js" />
+    <Content Include="Scripts\application.js" />
+    <Content Include="Scripts\App\Data\ordersdatasource.js" />
+    <Content Include="Scripts\App\Data\connection.js" />
+    <Content Include="Scripts\App\Data\productsdatasource.js" />
     <Content Include="Scripts\App\Models\models.js" />
+    <Content Include="Scripts\App\ViewModels\chooseproductviewmodel.js" />
+    <Content Include="Scripts\App\ViewModels\confirmationviewmodel.js" />
     <Content Include="Scripts\App\ViewModels\deliveryviewmodel.js" />
+    <Content Include="Scripts\App\ViewModels\pendingorderviewmodel.js" />
+    <Content Include="Scripts\App\ViewModels\placeorderviewmodel.js" />
     <Content Include="Scripts\Lib\amplify-vsdoc.js" />
     <Content Include="Scripts\Lib\amplify.js" />
     <Content Include="Scripts\Lib\amplify.min.js" />
-    <Content Include="Scripts\Lib\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Scripts\Lib\jquery-1.6.4.js" />
-    <Content Include="Scripts\Lib\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\Lib\jquery-1.7.2-vsdoc.js" />
+    <Content Include="Scripts\Lib\jquery-1.7.2.js" />
+    <Content Include="Scripts\Lib\jquery-1.7.2.min.js" />
     <Content Include="Scripts\Lib\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\Lib\jquery-ui-1.8.11.min.js" />
     <Content Include="Scripts\Lib\jquery.unobtrusive-ajax.js" />
@@ -187,8 +194,8 @@
     <Content Include="Scripts\Lib\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\Lib\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Lib\knockout-2.1.0.js" />
-    <Content Include="Scripts\Lib\modernizr-2.0.6-development-only.js" />
     <Content Include="Scripts\Lib\sammy.min.js" />
+    <Content Include="Scripts\Lib\modernizr-2.5.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -222,12 +229,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>11763</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost:11763/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
