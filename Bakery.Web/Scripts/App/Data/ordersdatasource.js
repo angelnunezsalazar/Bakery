@@ -29,14 +29,13 @@
         return order;
     };
 
-    var create = function (order, success) {
+    var create = function (order, success, error) {
         $.ajax({
             type: "POST",
             url: "/dataservice/orders",
             data: order,
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: success
+            success: success,
+            error: error
         });
     };
 
@@ -54,13 +53,12 @@
 
     return {
         create: function (order, success) {
-            if (Connection.online()) {
-                create(ko.toJSON(order), success);
-            } else {
+            var error = function () {
                 addToStorage(ko.toJS(order));
                 needSync(true);
                 success();
-            }
+            };
+            create(ko.toJSON(order), success, error);
         },
         needSync: needSync,
         pendingCount: pendingCount
