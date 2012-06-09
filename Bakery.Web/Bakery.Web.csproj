@@ -208,7 +208,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\AppCache.cshtml" />
+    <Content Include="CacheManifest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
