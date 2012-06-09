@@ -1,7 +1,4 @@
-﻿
-
-
-var ProductsDataSource = (function () {
+﻿var ProductsDataSource = (function () {
     return {
         getAll: function (success) {
             $.ajax({
