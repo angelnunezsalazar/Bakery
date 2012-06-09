@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+    App.StartupTimestamp = App.StartupTimestamp ?? DateTime.Now;
+}CACHE MANIFEST
+
+# Explicitly cache the follow content
+CACHE:
+/Content/images/bkg.png
+/Content/images/brand.png
+/Content/Site.css
+/Scripts/Lib/jquery-1.7.2.min.js
+/Scripts/Lib/knockout-2.1.0.js
+/Scripts/Lib/sammy.min.js
+/Scripts/Lib/amplify.min.js
+/Scripts/App/Models/models.js
+/Scripts/App/Data/connection.js
+/Scripts/App/Data/ordersdatasource.js
+/Scripts/App/Data/productsdatasource.js
+/Scripts/App/ViewModels/chooseproductviewmodel.js
+/Scripts/App/ViewModels/confirmationviewmodel.js
+/Scripts/App/ViewModels/placeorderviewmodel.js
+/Scripts/App/ViewModels/deliveryviewmodel.js
+/Scripts/App/ViewModels/pendingorderviewmodel.js
+/Scripts/application.js
+
+#The following URL should not be cached
+NETWORK:
+/dataservice/
+
+#When offline, for all URLs not explicity above, use the content cached for /
+FALLBACK:
+/ /
+
+#Expire the application cache whenever the server restart
+# @App.StartupTimestamp

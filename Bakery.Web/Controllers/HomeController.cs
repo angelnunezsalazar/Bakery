@@ -8,5 +8,13 @@ namespace Bakery.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult AppCache()
+        {
+            Response.ContentType = "text/cache-manifest";
+            Response.ContentEncoding = System.Text.Encoding.UTF8;
+            Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
+            return View();
+        }
     }
 }
