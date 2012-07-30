@@ -1,0 +1,33 @@
+﻿<!-- ko with: order -->
+<h1 data-bind="text: 'Place Your Order: '+product.name">
+</h1>
+<form action="" method="post">
+    <fieldset class="no-legend">
+        <legend>Place Your Order</legend>
+        <img class="product-image order-image" 
+             data-bind="attr:{ src:'/content/images/products/thumbnails/' + product.imagename, 
+                        alt:product.name }" />
+        <ol>
+            <li>
+                <label for="orderEmail">Your Email Address</label>
+                <input type="text" id="orderEmail" name="orderEmail" data-bind="value:email" />
+            </li>
+            <li>
+                <label for="orderShipping">Shipping Address</label>
+                <textarea rows="4" cols="20" id="orderShipping" name="orderShipping" 
+                          data-bind="value:address">
+                </textarea>
+            </li>
+            <li class="quantity">
+                <label for="orderQty">Quantity</label>
+                <input type="text" id="quantity" name="quantity" 
+                       data-bind="value:quantity, valueUpdate: 'afterkeydown'" />
+                x <span id="orderPrice" data-bind="text:product.price"></span>
+                = <span id="orderTotal" data-bind="text:total()"></span></li>
+        </ol>
+        <p>
+            <input type="submit" value="Place Order" data-bind="click:$parent.postOrder" />
+        </p>
+    </fieldset>
+</form>
+<!-- /ko -->

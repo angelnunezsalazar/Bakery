@@ -1,0 +1,20 @@
+﻿<ul id="products" data-bind="foreach: products">
+    <li class="product">
+        <div class="productInfo">
+            <h3 data-bind="text: name">
+            </h3>
+            <img class="product-image" 
+                    data-bind="attr:{ 
+                        src:'/content/images/products/thumbnails/' + imagename, 
+                        alt:name }" />
+            <p class="description" data-bind="text: description"></p>
+        </div>
+        <div>
+            <p class="price" data-bind="text: price"></p>
+            <a class="order-button" 
+                data-bind="attr:{ title:name }, click:$parent.goToPlaceOrder">
+                Order Now
+            </a>
+        </div>
+    </li>
+</ul>
